@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ăn Mày TikTok LIVE</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(#729ab2 0%,#e5c79d 60%,#89745b 60%);font-family:Arial;text-align:center;color:white;min-height:100vh;overflow:hidden}
+h1{font-size:24px;text-shadow:2px 2px #33221a;margin:20px 0}
+.stage{position:relative;margin:10px auto;width:min(95vw,500px);height:55vh;min-height:340px;border:6px solid #65462d;border-radius:16px;background:linear-gradient(#b49a7a 0%,#b49a7a 70%,#685442 70%);overflow:hidden}
+.wall{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0px,transparent 59px,#876d57 60px,#876d57 63px)}
+.person{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);font-size:125px;transition:transform .3s}
+.person.wave{animation:wave .5s 4 alternate}
+.person.thanks{animation:thanks .6s 3 alternate}
+@keyframes wave{to{transform:translateX(-50%) rotate(12deg)}}
+@keyframes thanks{to{transform:translateX(-50%) scale(1.12)}}
+.bowl{position:absolute;bottom:20px;left:25%;font-size:55px}
+.speech{position:absolute;top:15%;left:5%;right:5%;background:#fff7df;color:#432b1d;border-radius:18px;padding:14px;font-size:20px;font-weight:bold;min-height:70px;box-shadow:0 5px 15px #0005}
+.panel{padding:12px;background:#38261ddd}
+input{padding:12px;border-radius:8px;border:0;width:min(90%,300px);font-size:16px}
+button{padding:12px;margin:6px;border:0;border-radius:9px;background:#f4c36a;color:#382311;font-weight:bold;cursor:pointer}
+#log{font-size:13px;margin:8px}
+</style>
+</head>
+<body>
+<h1>🎩 ĂN MÀY TIKTOK LIVE 🎁</h1>
+<div class="stage">
+<div class="wall"></div>
+<div class="speech" id="speech">Xin chào mọi người! ❤️</div>
+<div class="person" id="person">🧎</div>
+<div class="bowl">🥣</div>
+</div>
+<div class="panel">
+<input id="username" placeholder="Nhập ID TikTok" value="khach_tiktok">
+<div>
+<button onclick="join()">👋 Người vào LIVE</button>
+<button onclick="gift('Hoa hồng')">🌹 Tặng hoa</button>
+<button onclick="gift('Quà đặc biệt')">🎁 Tặng quà</button>
+</div>
+<div id="log">Chế độ thử nghiệm • Chưa kết nối TikTok thật</div>
+</div>
+<script>
+const person=document.getElementById('person');
+const speech=document.getElementById('speech');
+const log=document.getElementById('log');
+function name(){return document.getElementById('username').value.trim()||'khach_tiktok'}
+function animate(type){person.className='person';void person.offsetWidth;person.classList.add(type);setTimeout(()=>person.className='person',2200)}
+function join(){const n=name();speech.textContent='Xin chào @'+n+'! Cảm ơn bạn đã ghé xem LIVE ❤️';animate('wave');log.textContent='👋 @'+n+' vừa vào xem'}
+function gift(g){const n=name();speech.textContent='Cảm ơn @'+n+' đã tặng '+g+'! Chúc bạn nhiều may mắn ❤️';animate('thanks');log.textContent='🎁 @'+n+' đã gửi '+g}
+</script>
+</body>
+</html>
